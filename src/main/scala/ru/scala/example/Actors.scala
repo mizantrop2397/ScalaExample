@@ -4,9 +4,7 @@ import akka.actor.{Actor, PoisonPill}
 import ru.scala.example.Constants.{DEFAULT_COUNT_DOWN, PINGER_ACTOR_PATH}
 
 class PingActor extends Actor {
-  private val countDown = DEFAULT_COUNT_DOWN
-
-  override def receive: PartialFunction[Any, Unit] = onMessage(countDown)
+  override def receive: PartialFunction[Any, Unit] = onMessage(DEFAULT_COUNT_DOWN)
 
   private def onMessage(countDown: Int): Receive = {
     case Pong ⇒ handlePong(countDown)
@@ -32,6 +30,7 @@ class PingActor extends Actor {
 }
 
 class PongActor() extends Actor {
+
   import context.system
 
   def receive: PartialFunction[Any, Unit] = {

@@ -12,7 +12,7 @@ object PingPongGame {
 
   def startGame(): Unit = startPinging(createPonger(createPinger))
 
-  private def startPinging(ponger: ActorRef) = system.scheduler.scheduleOnce(0 nanos) {
+  private def startPinging(ponger: ActorRef): Unit = system.scheduler.scheduleOnce(0 nanos) {
     println("Starting game...")
     ponger ! Ping
   }
